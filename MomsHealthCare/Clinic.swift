@@ -11,7 +11,7 @@ enum Clinic {
     static let formEndpoint = URL(string: "https://formsubmit.co/ajax/drpubalisarkar@gmail.com")!
     static let website = "https://momshealthcare.site.je/"
     static let websiteOrigin = "https://momshealthcare.site.je"
-    static let repoURL = URL(string: "https://github.com/MinecraftUser21/momshealthcare-android")!
+    static let repoURL = URL(string: "https://github.com/MinecraftUser21/momshealthcare-ios")!
 
     static let directionsURL = URL(string: "https://www.google.com/maps/dir/?api=1&destination=F886%2BQC%2C%20Kolkata%2C%20West%20Bengal")!
     static let address = "2nd, Sister Nivedita Rd, East Barisha Govt Colony, Manjhi Para, Thakurpukur, Kolkata, West Bengal 700063"
