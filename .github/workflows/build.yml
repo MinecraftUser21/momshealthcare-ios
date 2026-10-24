@@ -47,3 +47,21 @@ jobs:
         with:
           name: ios-screenshots
           path: shots
+
+  ipa:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build unsigned IPA (for sideloading tools that re-sign it)
+        run: |
+          xcodebuild -project MomsHealthCare.xcodeproj -scheme MomsHealthCare -configuration Release \
+            -destination 'generic/platform=iOS' -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build
+          mkdir -p Payload
+          cp -R build/Build/Products/Release-iphoneos/MomsHealthCare.app Payload/
+          zip -qry MomsHealthCare-unsigned.ipa Payload
+          ls -la MomsHealthCare-unsigned.ipa
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ipa
+          path: MomsHealthCare-unsigned.ipa
