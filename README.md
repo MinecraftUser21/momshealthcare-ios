@@ -32,10 +32,27 @@ The Android version lives at [momshealthcare-android](https://github.com/Minecra
 Everything stays on the device. Only a booking or cancellation is sent, and only to the clinic.
 Animations pause with Reduce Motion or Low Power Mode.
 
-## Run it
+## Install with Sideloadly
 
-Apple only allows apps to be installed from the App Store, TestFlight or Xcode, so there is no file
-to download here.
+No Mac needed. [Sideloadly](https://sideloadly.io) signs the app with your own Apple ID and installs
+it over a cable. Works for iPhone and iPad on iOS 16 or later.
+
+1. Download **`MomsHealthCare.ipa`** from the [latest release](../../releases/latest).
+2. Install Sideloadly from [sideloadly.io](https://sideloadly.io). On Windows, also install
+   **iTunes** and **iCloud** from Apple’s website (not the Microsoft Store versions), so the computer can talk to the phone.
+3. Connect your iPhone or iPad with a cable, unlock it, and tap **Trust** if it asks.
+4. Open Sideloadly, drag `MomsHealthCare.ipa` into it, enter your Apple ID and press **Start**.
+   Use a spare Apple ID if you prefer; it only signs the app.
+5. On the device, open **Settings › General › VPN & Device Management**, tap your Apple ID and
+   choose **Trust**.
+6. On iOS 16 and later, also turn on **Settings › Privacy & Security › Developer Mode** and restart
+   when asked.
+
+With a free Apple ID the app works for **7 days**, then needs installing again the same way (your
+appointments and saved patients are kept). A free Apple ID can have 3 sideloaded apps at a time.
+A paid Apple Developer account makes it last a year.
+
+## Build it yourself
 
 1. On a Mac with Xcode 16 or later, open `MomsHealthCare.xcodeproj`.
 2. Choose your iPhone or iPad (or “My Mac (Designed for iPad)”) and press **Run**.
@@ -68,7 +85,8 @@ or **Call**.
 | `Theme.swift`, `Components.swift` | Colours, buttons, heartbeat line, shared pieces |
 
 Every push to `main` is built by GitHub Actions on a Mac, run on iPhone and iPad simulators, and
-screenshots are saved as build artifacts. Debug builds accept `-demo YES`, `-tab <home|appointments|pregnancy|clinic>`
+screenshots are saved as build artifacts. Pushing a tag such as `v1.2` also builds
+`MomsHealthCare.ipa` and attaches it to that release. Debug builds accept `-demo YES`, `-tab <home|appointments|pregnancy|clinic>`
 and `-book YES` launch arguments for those screenshots.
 
 ## License
